@@ -1,6 +1,24 @@
 # ytube download
 Download from youtube to mp3 (music only) or mp4 (video) with desired quality. 
 
+```
+ytube-download
+|-- data
+|   |-- list_links.txt
+|-- downloads
+|-- src
+|   |-- conf
+|   |   |- __init__.py
+|   |   |- config.py
+|   |   |- config.yaml
+|   `-- run_ytube_download.py
+|   |-- Dockerfile
+|-- docker-compose.yml
+|-- requirements.txt
+|-- .gitignore
+`-- README.md
+```
+
 ## Installation
 ### Python
 Install in a python environment:
@@ -21,6 +39,8 @@ docker pull juanabascal/ytube:latest
 
 
 ## Usage
+It allows to download one or more URL's as mp3 or mp4 with a desired resolution if the latter exists. 
+
 Recently, Google has added a validation step, which will be executed only the first time, requiring to validate with a google account and press enter.
 
 
@@ -30,16 +50,23 @@ In a python environment, to download music-only mp3 file, run
 ```
 python src/run_ytube_download.py
 ```
-which will prompt the youtube link and will download the file to *./outputs*.
+which will prompt the youtube link and will download the file to *./downloads*.
 
-The following arguments can be passed:
-- video Y : To download video; otherwise, it downloads music only on mp3
-- resolution 720: 720p, 360p, ... Otherwise or if not exist, it will download the largest resolution
-- format mp4 : mp4, mp3, ...
+The following arguments can be passed following [*hydra*](https://hydra.cc/docs/intro/) framework:
+- params.video = Y : To download video; otherwise, it downloads music only on mp3
+- params.file_resolution = 1020p: 720p, 360p, ... Otherwise or if not exist, it will download the largest resolution
+- params.file_ext = mp4 : mp4, mp3, ...
+
+For more information on hydra, refer to [netune.ai/blog](https://neptune.ai/blog/how-to-manage-track-visualize-hyperparameters).
 
 For instance, to download video format at resolution 1080p: 
 ```
-python run_ytube_download.py --video Y --resolution 1080p
+python src/run_ytube_download.py params.video=Y params.fileresolution=1080p
+```
+
+To download a list of URLs, place a txt file with the list of URLs in the folder *./data/* and execute:
+```
+python src/run_ytube_download.py params.url_list=list_links.txt
 ```
 
 ### Docker
@@ -56,14 +83,13 @@ docker compose run ytube
 python src/run_ytube_download.py
 ```
 Music is downloaded to the *music* volume at */var/lib/docker/volumes/music/_data/*. 
-
-
-#### Buid the Docker image
-If you want to rebuild the docker image, using the Dockerfile:
-
+To copy files to local directory:
 ```
-docker build -t juanabascal/ytube:latest .
+chmod +x copy_downloads.sh
+./copy_downloads.sh
 ```
 
+
+To use the text file with list of URLs, you can run *ytube_song_list.sh* 
 
 

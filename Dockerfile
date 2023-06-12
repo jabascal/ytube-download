@@ -3,7 +3,8 @@ FROM python:3.8-slim-buster
 WORKDIR /usr/src/app
 
 COPY src ./src
-COPY requirements.txt README.md docker-compose.yml  Dockerfile ./
+
+COPY requirements.txt README.md docker-compose.yml ytube_song_list.sh copy_downloads.sh Dockerfile ./
 
 RUN apt-get -y update && \
     apt-get -y install ffmpeg && \

@@ -1,19 +1,12 @@
-version: "1"
-
+version: "2"
 services: 
-
   ytube:
-
     build: .
-
-    image: juanabascal/ytube:latest
-
+    image: juanabascal/ytube:hydra
     volumes:
-
     # volume created in /var/lib/docker/volumes/ytube-download_music/_data/
-
-      - music:/usr/src/app/outputs
-
+      - music:/usr/src/app/downloads
+      - data:/usr/src/app/data
 volumes:
-
   music:
+  data:

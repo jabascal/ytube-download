@@ -2,3 +2,4 @@ venv/
 /outputs/
 src/utils/__pycache__/
 .Dockerfile.swp
+downloads/

@@ -1,0 +1,14 @@
+project: ytube-download
+name: ytube-download
+
+params:  
+  video: N # "Y", "N"
+  file_resolution: # "720p", "1020p"
+  file_ext: mp3 # mp4, mp3
+  url_list:  # string file name (list_links.txt) : list of links to be downloaded within /data
+  url: # Pass url as parameter
+
+paths:
+  log: ./runs
+  downloads: ${hydra:runtime.cwd}/downloads
+  data: ${hydra:runtime.cwd}/data
