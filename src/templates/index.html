@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+  <div class="container">
+    <form action="/download" method="POST">
+      <div class="jumbotron">
+        <h1> Ytube Download </h1>
+        <p> Download music from youtube to mp3 <p>
+      </div>
+      <div class="mb-3">
+        <label for="url">Input URL:</label>
+        <input type="text" class="form-control" name="url" id="url" placeholder="URL" aria-label="URL" aria-describedby="basic-addon1">  
+      </div>
+      <br>
+      <div class="mb-3">
+        <p>Video or music only?</p>
+        <select class="form-select" name="video" id="video">
+          <option selected value="music">Music (mp3)</option>
+          <option value="video">Video (mp4)</option>
+        </select>
+      </div>
+      <br>
+      <div class="mb-3">
+        <p>First (low) or last (high) quality?</p>
+        <select class="form-select" name="quality" id="quality">
+          <option selected value="last">High</option>
+          <option value="first">Low</option>
+        </select>
+      </div>
+      <br>
+      <!-- > 
+      <button class="btn btn-success" onclick="downloadVideo()"> Download </button>
+      <button class="btn btn-success" href="/download"> Download </button>
+      <button class="btn btn-success" onclick="window.location.href='https://www.freecodecamp.org/';"> Download </button>
+      <button class="btn btn-success" onclick="window.location.href='/download';"> Download </button>
+      <button class="btn btn-success" onclick="window.location.href='/download';"> Download </button>
+      -->
+      <button class="btn btn-success"> Download </button>
+      <br>
+      <hr style="width:100%;text-align:left;margin-left:0">
+      <hr style="width:100%;text-align:left;margin-left:0">
+      <div id="bulk_result" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 10px;"> 
+      <div class="container">
+        {% if url %}
+            <h2>{{url}} downloaded to {{path_downloads}}</h2>
+        {% elif url %}
+            <h2>URL not introduced!</h2>
+        {% endif %}
+      </div>
+      </form>    
+  </div>
+
+{% include 'footer.html' %}
