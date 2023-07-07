@@ -10,7 +10,6 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-
 @app.get("/", response_class=HTMLResponse)
 def root(request: Request):
     """"
