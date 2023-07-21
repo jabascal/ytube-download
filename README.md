@@ -35,4 +35,28 @@ chmod +x run_ytube.sh
 ./run_ytube.sh
 ```
 
+### Use in replit
+
+[https://replit.com/@jabascal1/ytube-download
+](https://replit.com/@jabascal1/ytube-download?v=1)
+
+Install requirements:
+```
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Use nix package manager to install ffmpeg
+```
+nix-shell -p jellyfin-ffmpeg
+```
+
+Add *pkgs.jellyfin-ffmpeg* to *replit.nix*. Then, add to *.replit*
+```
+run="./run_ytube.sh"
+```
+as explained in https://docs.replit.com/programming-ide/nix-on-replit
+
+File are downloaded to */home/runner/ytube-download/src/downloads/*
+
 
