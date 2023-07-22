@@ -1,7 +1,6 @@
 # ytube download
 FastAPI app to download from youtube to mp3 (music only) or mp4 with highest or lowest quality. 
-
-It uses YT-DLP: https://github.com/yt-dlp/yt-dlp
+It leverages YT-DLP: https://github.com/yt-dlp/yt-dlp
 
 ![](https://github.com/jabascal/ytube-download/blob/fastapi/figures/ytube_app.png)
 
@@ -37,10 +36,10 @@ chmod +x run_ytube.sh
 
 ### Use in replit
 
-[https://replit.com/@jabascal1/ytube-download
-](https://replit.com/@jabascal1/ytube-download?v=1)
+Try it in replit:   [![Run in replit](https://badgen.net/badge/Run/Replit/red?)](https://replit.com/@jabascal1/ytube-download?v=1)
 
-Install requirements:
+Fork and run directly on your replit account:
+
 ```
 source venv/bin/activate
 pip install -r requirements.txt
@@ -58,5 +57,12 @@ run="./run_ytube.sh"
 as explained in https://docs.replit.com/programming-ide/nix-on-replit
 
 File are downloaded to */home/runner/ytube-download/src/downloads/*
+
+```
+mkdir downloads
+cd downloads
+mv /home/runner/ytube-download/src/downloads/* .
+```
+
 
 
