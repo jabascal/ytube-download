@@ -64,5 +64,33 @@ cd downloads
 mv /home/runner/ytube-download/src/downloads/* .
 ```
 
+### Use with Docker
+Docker image built as
+```
+docker build --no-cache -t juanabascal/ytube .
+```
+
+Run docker image with port and volume mapping
+```
+docker run -p 8000:8000 -it -v ytube:/usr/app/src/downloads juanabascal/ytube
+```
+
+Downloads can be found at */var/lib/docker/volumes/ytube/_data/*. To move files to a target directory
+```
+mkdir /home/$USER/Music/downloads
+chmod +x copy_files_docker_vol.sh
+./copy_files_docker_vol.sh
+```
+
+### Use with docker-compose
+```
+docker-compose up
+```
+Data is download to volume */var/lib/docker/volumes/ytube-download_ytube/_data*. To copy files
+```
+mkdir /home/$USER/Music/downloads
+chmod +x copy_files_docker_compose_vol.sh
+./copy_files_docker_compose_vol.sh
+```
 
 

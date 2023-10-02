@@ -1,0 +1,12 @@
+version: '2'
+services:
+  ytube:
+    build: .
+    image: juanabascal/ytube:latest
+    volumes:
+      - ytube:/usr/app/src/downloads
+    # Port to expose
+    ports:
+      - "8000:8000"
+volumes:
+  ytube:
